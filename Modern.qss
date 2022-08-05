@@ -17,6 +17,11 @@
 /*   along with this program.  If not, see <http://www.gnu.org/licenses/>.    */
 /******************************************************************************/
 
+OBSThemeMeta {
+    dark: 'true';
+    author: 'luckydye';
+}
+
 /* Colors */
 
 /* rgb(225,224,225); /* veryLight */
@@ -74,6 +79,15 @@ OBSTheme::disabled {
 OBSTheme::inactive {
     highlight: rgb(48,47,48);
     highlightedText: rgb(255,255,255);
+}
+
+/* Controls */
+
+#streamButton,
+#recordButton,
+QPushButton[themeID="replayBufferButton"],
+#broadcastButton {
+    padding: 10px;
 }
 
 
@@ -304,6 +318,7 @@ SceneTree::item {
     margin: 4px 4px 0px 4px;
     border-radius: 4px;
     background-color: #232325;
+    border: 0px solid transparent;
 }
 
 SceneTree::item {
@@ -319,6 +334,8 @@ SourceTree::item:selected,
 SceneTree::item:selected {
     background-color: #3A3A3E;
     color: palette(window-text);
+    border: none;
+    outline: none;
 }
 
 /* Scenes and Sources toolbar */
@@ -349,7 +366,7 @@ QToolButton:pressed {
 }
 
 * [themeID="removeIconSmall"] {
-    qproperty-icon: url(./Dark/minus.svg);
+    qproperty-icon: url(./Dark/trash.svg);
 }
 
 * [themeID="propertiesIconSmall"] {
@@ -360,8 +377,20 @@ QToolButton:pressed {
     qproperty-icon: url(./Dark/settings/general.svg);
 }
 
+* [themeID="menuIconSmall"] {
+    qproperty-icon: url(./Dark/dots-vert.svg);
+}
+
 * [themeID="refreshIconSmall"] {
     qproperty-icon: url(./Dark/refresh.svg);
+}
+
+* [themeID="cogsIcon"] {
+    qproperty-icon: url(./Dark/cogs.svg);
+}
+
+#sourceInteractButton {
+    qproperty-icon: url(./Dark/interact.svg);
 }
 
 * [themeID="upArrowIconSmall"] {
@@ -557,7 +586,7 @@ QPushButton {
     color: palette(window-text);
     background-color: #2D2D31;
     border-radius: 4px;
-    padding: 8px 20px;
+    padding: 6px 20px;
     border: 1px solid #000000;
 }
 
@@ -697,11 +726,35 @@ MuteCheckBox {
 }
 
 MuteCheckBox::indicator:checked {
-    image: url(./Dark/mute.svg);
+	image: url(./Dark/mute.svg);
 }
 
 MuteCheckBox::indicator:unchecked {
-    image: url(./Dark/settings/audio.svg);
+	image: url(./Dark/settings/audio.svg);
+}
+
+MuteCheckBox::indicator:unchecked:hover {
+	image: url(./Dark/settings/audio.svg);
+}
+
+MuteCheckBox::indicator:unchecked:focus {
+	image: url(./Dark/settings/audio.svg);
+}
+
+MuteCheckBox::indicator:checked:hover {
+	image: url(./Dark/mute.svg);
+}
+
+MuteCheckBox::indicator:checked:focus {
+	image: url(./Dark/mute.svg);
+}
+
+MuteCheckBox::indicator:checked:disabled {
+	image: url(./Dark/mute.svg);
+}
+
+MuteCheckBox::indicator:unchecked:disabled {
+	image: url(./Dark/settings/audio.svg);
 }
 
 OBSHotkeyLabel[hotkeyPairHover=true] {
@@ -892,6 +945,7 @@ OBSBasic {
     qproperty-groupIcon: url(./Dark/sources/group.svg);
     qproperty-sceneIcon: url(./Dark/sources/scene.svg);
     qproperty-defaultIcon: url(./Dark/sources/default.svg);
+    qproperty-audioProcessOutputIcon: url(./Dark/sources/windowaudio.svg);
 }
 
 /* Scene Tree */
@@ -1005,6 +1059,34 @@ OBSYoutubeActions {
     background: rgb(31,30,31);
     border: none;
 }
+
+/* YouTube Integration */
+OBSYoutubeActions {
+    qproperty-thumbPlaceholder: url(./Dark/sources/image.svg);
+}
+
+#ytEventList QLabel {
+    color: palette(text);
+    background-color: palette(button);
+    border: none;
+    border-radius: 3px;
+    padding: 4px 20px;
+}
+
+#ytEventList QLabel:hover {
+    background-color: rgb(79,83,94);
+}
+
+#ytEventList QLabel[isSelectedEvent=true] {
+    background-color: rgb(40,76,184);
+    border: none;
+}
+
+#ytEventList QLabel[isSelectedEvent=true]:hover {
+    background-color: rgb(54,92,192);
+    color: palette(text);
+}
+
 
 /* Calendar Widget */
 QDateTimeEdit::down-arrow {
